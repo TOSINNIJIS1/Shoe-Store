@@ -19,15 +19,8 @@ export default function Detail() {
       <h1>{product.name}</h1>
       <p>{product.description}</p>
       <p id="price">${product.price}</p>
-      <p>
-        <button 
-        className="btn btn-primary" 
-        onClick={ () => navigate("/cart") 
-        }>
-          Add to cart 
-        </button>
 
-        <select
+      <select
           id="size"
           value={sku}
           onChange={(e) => setSku(e.target.value)}>
@@ -37,7 +30,16 @@ export default function Detail() {
             <option key={s.sku} value={s.sku}> {s.size} </option> 
           ))}
           
-        </select>
+      </select>
+
+      <p>
+        <button 
+        disabled={!sku}
+        className="btn btn-primary" 
+        onClick={ () => navigate("/cart") 
+        }>
+          Add to cart 
+        </button>
       </p>
       <img src={`/images/${product.image}`} alt={product.category} />
     </div>
